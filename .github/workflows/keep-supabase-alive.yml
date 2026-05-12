@@ -10,14 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SUPABASE_URL: ${{ secrets.SUPABASE_URL || vars.SUPABASE_URL }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
 
     steps:
       - name: Validate configuration
         run: |
           test -n "$SUPABASE_URL"
 
-      - name: Ping Supabase Health Endpoint
+      - name: Debug Supabase URL
         run: |
-          curl --fail --silent --show-error \
-            "$SUPABASE_URL/auth/v1/health"
+          echo "SUPABASE_URL=$SUPABASE_URL"
+          echo "FINAL_URL=$SUPABASE_URL/storage/v1/version"
+
+      - name: Ping Supabase
+        run: |
+          curl -v \
+            "$SUPABASE_URL/storage/v1/version"
