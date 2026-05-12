@@ -1,0 +1,12 @@
+{
+  "name": "controle-empenhos",
+  "version": "1.0.0",
+  "description": "Controle de Empenhos em desktop com Electron",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^37.2.0"
+  }
+}
